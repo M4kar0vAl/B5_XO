@@ -70,7 +70,7 @@ def is_coord_correct(func):
 def is_position_empty(func):
     """Проверяет занята ли позиция другим символом.
     Если позиция свободна присваивает ей символ.
-    Если позиция занята сообщает об этом и запрашивает новые координатыю
+    Если позиция занята сообщает об этом и запрашивает новые координаты.
     Возвращает игровое поле"""
 
     def wrapper():
@@ -102,11 +102,15 @@ battlefield = [['_', '_', '_'],
                ['_', '_', '_'],
                ['_', '_', '_']]
 
-print(f'   1    2    3\
-      \na{battlefield[0][0]:>3} {battlefield[0][1]:>4} {battlefield[0][2]:>4}\
-      \nb{battlefield[1][0]:>3} {battlefield[1][1]:>4} {battlefield[1][2]:>4}\
-      \nc{battlefield[2][0]:>3} {battlefield[2][1]:>4} {battlefield[2][2]:>4}')
 
+def print_battlefield():
+    letters = 'abc'
+    print(f"{''.join([f'{row + 1:>5}' for row in range(len(battlefield))])}")
+    for row in range(len(battlefield)):
+        print(f"{letters[row]}{' ':<3}{battlefield[row][0]}{' ':<4}{battlefield[row][1]}{' ':<4}{battlefield[row][2]}")
+
+
+print_battlefield()
 import numpy as np
 
 while True:
@@ -121,10 +125,7 @@ while True:
     print('')
     ask_coords()
     print('')
-    print(f'   1    2    3\
-          \na{battlefield[0][0]:>3} {battlefield[0][1]:>4} {battlefield[0][2]:>4}\
-          \nb{battlefield[1][0]:>3} {battlefield[1][1]:>4} {battlefield[1][2]:>4}\
-          \nc{battlefield[2][0]:>3} {battlefield[2][1]:>4} {battlefield[2][2]:>4}')
+    print_battlefield()
     if any([all([el == symbol for el in row]) for row in battlefield]) \
             or any([all([el == symbol for el in col]) for col in np.transpose(battlefield)]) \
             or all([el == symbol for el in np.diagonal(battlefield)]) \
