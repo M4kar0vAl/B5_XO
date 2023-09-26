@@ -106,8 +106,8 @@ battlefield = [['_', '_', '_'],
 def print_battlefield():
     letters = 'abc'
     print(f"{''.join([f'{row + 1:>5}' for row in range(len(battlefield))])}")
-    for row in range(len(battlefield)):
-        print(f"{letters[row]}{' ':<3}{battlefield[row][0]}{' ':<4}{battlefield[row][1]}{' ':<4}{battlefield[row][2]}")
+    for n, row in enumerate(battlefield):
+        print(f'''{letters[n]:<4}{f"{' ':<4}".join(row)}''')
 
 
 print_battlefield()
